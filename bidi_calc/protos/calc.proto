@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package calc;
+
+service Calc {
+    rpc Calculate (stream CalcRequest) returns (stream CalcResponse);
+}
+
+message CalcRequest {
+    int64 number = 1;
+}
+
+message CalcResponse {
+    string message = 1;
+}
