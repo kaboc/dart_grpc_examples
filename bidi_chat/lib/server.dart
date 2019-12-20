@@ -9,26 +9,26 @@ class ChatService extends ChatServiceBase {
   Stream<Post> connect(ServiceCall call, Stream<Post> request) async* {
     print('Connected: #${request.hashCode}');
 
-    final myController = StreamController<Post>();
-    _controllers[myController] = null;
+    final clientController = StreamController<Post>();
+    _controllers[clientController] = null;
 
     request.listen((req) {
       print('Request from ${req.name} (#${request.hashCode})');
 
-      _controllers.forEach((c, _) {
-        if (c != myController) {
-          c.sink.add(req);
+      _controllers.forEach((controller, _) {
+        if (controller != clientController) {
+          controller.sink.add(req);
         }
       });
     }).onError((dynamic e) {
       print(e);
 
-      _controllers.remove(myController);
-      myController.close();
+      _controllers.remove(clientController);
+      clientController.close();
       print('Disconnected: #${request.hashCode}');
     });
 
-    await for (final req in myController.stream) {
+    await for (final req in clientController.stream) {
       print('  -> piped to #${request.hashCode}');
 
       yield Post()
