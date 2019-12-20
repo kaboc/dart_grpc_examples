@@ -22,24 +22,18 @@ Future<void> main() async {
     }
   } catch (e) {
     print(e);
+    await channel.shutdown();
+    exit(0);
   }
-
-  await channel.shutdown();
 }
 
 Stream<CalcRequest> requestStream() async* {
   print('Input a numerical value and then press Enter.');
-  print('Or press just Enter to quit.');
 
-  outerLoop:
   while (true) {
     final lines = stdin.transform(utf8.decoder).transform(const LineSplitter());
 
     await for (final line in lines) {
-      if (line.isEmpty) {
-        break outerLoop;
-      }
-
       final num = toInt(line);
       if (num == null) {
         print('Input a value correctly');
@@ -51,5 +45,9 @@ Stream<CalcRequest> requestStream() async* {
 }
 
 Int64 toInt(String text) {
-  return text == null ? null : Int64.parseInt(text);
+  try {
+    return Int64.parseInt(text);
+  } catch (_) {
+    return null;
+  }
 }
