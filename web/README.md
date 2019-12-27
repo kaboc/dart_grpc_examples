@@ -41,7 +41,7 @@ If necessary, change 50051 to another port you want the proxy to listen on.
 ```
 $ docker run -d -p 50051:8080 --name greet_proxy greet/envoy
 ```
-5. Move back to the root folder of this example and start a server with the port number `9090` passed by the `-p` flag.
+5. `cd` to the root folder of the [unary_greet](../unary_greet) example and start a server with the port number `9090` passed by the `-p` flag.
 Change the number accordingly if you have specified a different one on the last line of your envoy.yaml.  
 ```
 $ dart lib/server.dart -p 9090
