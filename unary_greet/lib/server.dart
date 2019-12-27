@@ -1,3 +1,4 @@
+import 'package:args/args.dart';
 import 'package:grpc/grpc.dart';
 import 'package:unary_greet/src/pb/greet.pbgrpc.dart';
 
@@ -16,8 +17,16 @@ class GreeterService extends GreeterServiceBase {
   }
 }
 
-Future<void> main() async {
+Future<void> main(List<String> args) async {
+  final parser = ArgParser()..addOption('port', abbr: 'p');
+  final results = parser.parse(args);
+  final port = toInt(results['port']?.toString()) ?? 50051;
+
   final server = Server([GreeterService()]);
-  await server.serve(port: 50051);
+  await server.serve(port: port);
   print('Server listening on port ${server.port}...');
+}
+
+int toInt(String text) {
+  return text == null ? null : int.parse(text);
 }
