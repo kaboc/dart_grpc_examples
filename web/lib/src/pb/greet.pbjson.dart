@@ -18,6 +18,7 @@ const Greeting$json = const {
   '2': const [
     const {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
     const {'1': 'names', '3': 2, '4': 3, '5': 11, '6': '.greet.Greeting.NamesEntry', '10': 'names'},
+    const {'1': 'time', '3': 3, '4': 1, '5': 3, '10': 'time'},
   ],
   '3': const [Greeting_NamesEntry$json],
 };

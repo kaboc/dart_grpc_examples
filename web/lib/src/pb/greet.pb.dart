@@ -7,6 +7,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class Name extends $pb.GeneratedMessage {
@@ -54,6 +55,7 @@ class Greeting extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Greeting', package: const $pb.PackageName('greet'), createEmptyInstance: create)
     ..aOS(1, 'message')
     ..m<$core.String, $core.String>(2, 'names', entryClassName: 'Greeting.NamesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('greet'))
+    ..aInt64(3, 'time')
     ..hasRequiredFields = false
   ;
 
@@ -83,6 +85,15 @@ class Greeting extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, $core.String> get names => $_getMap(1);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get time => $_getI64(2);
+  @$pb.TagNumber(3)
+  set time($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTime() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTime() => clearField(3);
 }
 
 class HelloRequest extends $pb.GeneratedMessage {
