@@ -1,4 +1,5 @@
 import 'package:args/args.dart';
+import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
 import 'package:unary_greet/src/pb/greet.pbgrpc.dart';
 
@@ -7,12 +8,15 @@ class GreeterService extends GreeterServiceBase {
   Future<HelloReply> sayHello(ServiceCall call, HelloRequest request) async {
     print('Request from ${request.name.firstName} ${request.name.lastName}');
 
+    final time = DateTime.now();
+
     final greeting = Greeting()
-      ..message = DateTime.now().hour < 12 ? 'Good Morning' : 'Hi'
+      ..message = time.hour < 12 ? 'Good Morning' : 'Hi'
       ..names.addAll({
         'first': request.name.firstName,
         'last': request.name.lastName,
-      });
+      })
+      ..time = Int64(time.millisecondsSinceEpoch);
     return HelloReply()..greeting = greeting;
   }
 }
