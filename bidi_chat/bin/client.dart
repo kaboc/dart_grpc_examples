@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:grpc/grpc.dart';
-import 'src/pb/chat.pbgrpc.dart';
+import 'package:chat/src/pb/chat.pbgrpc.dart';
 
 Future<void> main(List<String> args) async {
   if (args.isEmpty) {

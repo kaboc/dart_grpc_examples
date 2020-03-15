@@ -8,15 +8,15 @@ class GreeterService extends GreeterServiceBase {
   Future<HelloReply> sayHello(ServiceCall call, HelloRequest request) async {
     print('Request from ${request.name.firstName} ${request.name.lastName}');
 
-    final time = DateTime.now();
+    final now = DateTime.now();
 
     final greeting = Greeting()
-      ..message = time.hour < 12 ? 'Good Morning' : 'Hi'
+      ..message = now.hour < 12 ? 'Good Morning' : 'Hi'
       ..names.addAll({
         'first': request.name.firstName,
         'last': request.name.lastName,
       })
-      ..time = Int64(time.millisecondsSinceEpoch);
+      ..time = Int64(now.millisecondsSinceEpoch);
     return HelloReply()..greeting = greeting;
   }
 }

@@ -10,7 +10,7 @@
 
 * [bidi_chat](./bidi_chat)
     * An example of broadcast from a server to multiple clients by Bidirectional streaming RPCs
-    * A nickname needs to be provided when you run lib/client.dart.  
+    * A nickname needs to be provided when you run bin/client.dart.  
 ![Screencast of bidi_chat](./doc/images/bidi_chat.gif)
 
 * [web](./web)

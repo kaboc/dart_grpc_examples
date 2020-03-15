@@ -18,10 +18,10 @@ Once the server has started, open http://localhost:8080/ in a browser.
 Set up a proxy following the steps in the next section, and then run a gRPC server with the command below.
 
 ```sh
-$ dart ../unary_greet/lib/server.dart -p 9090
+$ dart ../unary_greet/bin/server.dart -p 9090
 ```
 
-`lib/server.dart` of [unary_greet](../unary_greet) is used here too since both examples use the same proto file.
+`bin/server.dart` of [unary_greet](../unary_greet) is used here too since both examples use the same proto file.
 
 ## Proxy
 
@@ -44,7 +44,7 @@ $ docker run -d -p 50051:8080 --name greet_proxy greet/envoy
 5. `cd` to the root folder of the [unary_greet](../unary_greet) example and start a server with the port number `9090` passed by the `-p` flag.
 Change the number accordingly if you have specified a different one on the last line of your envoy.yaml.  
 ```
-$ dart lib/server.dart -p 9090
+$ dart bin/server.dart -p 9090
 ```
 
 ### Other options for a proxy
