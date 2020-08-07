@@ -26,7 +26,8 @@ Future<void> main(List<String> args) async {
     }
   } catch (e) {
     print(e);
-    channel.shutdown();
+  } finally {
+    await channel.shutdown();
     exit(0);
   }
 }
