@@ -6,8 +6,10 @@ Future<void> main() async {
   final channel = ClientChannel(
     'localhost',
     port: 50051,
-    options: const ChannelOptions(
+    options: ChannelOptions(
       credentials: ChannelCredentials.insecure(),
+      codecRegistry:
+          CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
     ),
   );
 
@@ -20,7 +22,10 @@ Future<void> main() async {
   );
 
   try {
-    final response = await client.sayHello(request);
+    final response = await client.sayHello(
+      request,
+      options: CallOptions(compression: const GzipCodec()),
+    );
     final greet = response.greeting;
     final time = DateTime.fromMillisecondsSinceEpoch(greet.time.toInt());
 

@@ -26,7 +26,11 @@ Future<void> main(List<String> args) async {
   final results = parser.parse(args);
   final port = toInt(results['port']?.toString()) ?? 50051;
 
-  final server = Server([GreeterService()]);
+  final server = Server(
+    [GreeterService()],
+    const <Interceptor>[],
+    CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+  );
   await server.serve(port: port);
   print('Server listening on port ${server.port}...');
 }
