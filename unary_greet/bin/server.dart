@@ -31,6 +31,6 @@ Future<void> main(List<String> args) async {
   print('Server listening on port ${server.port}...');
 }
 
-int toInt(String text) {
+int? toInt(String? text) {
   return text == null ? null : int.parse(text);
 }

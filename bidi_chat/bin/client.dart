@@ -13,7 +13,7 @@ Future<void> main(List<String> args) async {
     'localhost',
     port: 50051,
     options: const ChannelOptions(
-      credentials: ChannelCredentials.insecure()
+      credentials: ChannelCredentials.insecure(),
     ),
   );
 
@@ -37,9 +37,10 @@ Stream<Post> postStream(String name) async* {
     final lines = stdin.transform(utf8.decoder).transform(const LineSplitter());
 
     await for (final line in lines) {
-      yield Post()
-        ..name = name
-        ..message = line;
+      yield Post(
+        name: name,
+        message: line,
+      );
     }
   }
 }

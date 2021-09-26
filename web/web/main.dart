@@ -22,7 +22,7 @@ Future<void> greet(String name) async {
   final client = GreeterClient(channel);
 
   final request = HelloRequest();
-  request.name = Name()..firstName = name;
+  request.name = Name(firstName: name);
 
   try {
     final response = await client.sayHello(request);

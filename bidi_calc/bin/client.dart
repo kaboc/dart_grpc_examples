@@ -35,20 +35,12 @@ Stream<CalcRequest> requestStream() async* {
     final lines = stdin.transform(utf8.decoder).transform(const LineSplitter());
 
     await for (final line in lines) {
-      final num = toInt(line);
+      final num = int.tryParse(line);
       if (num == null) {
         print('Input a value correctly');
       } else {
-        yield CalcRequest()..number = num;
+        yield CalcRequest(number: Int64(num));
       }
     }
-  }
-}
-
-Int64 toInt(String text) {
-  try {
-    return Int64.parseInt(text);
-  } catch (_) {
-    return null;
   }
 }
