@@ -32,9 +32,10 @@ class ChatService extends ChatServiceBase {
     await for (final req in clientController.stream) {
       print('  -> piped to #${request.hashCode}');
 
-      yield Post()
-        ..name = req.name
-        ..message = req.message;
+      yield Post(
+        name: req.name,
+        message: req.message,
+      );
     }
   }
 }
@@ -49,6 +50,6 @@ Future<void> main(List<String> args) async {
   print('Server listening on port ${server.port}...');
 }
 
-int toInt(String text) {
+int? toInt(String? text) {
   return text == null ? null : int.parse(text);
 }

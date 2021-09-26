@@ -14,9 +14,10 @@ Future<void> main() async {
   final client = GreeterClient(channel);
 
   final request = HelloRequest();
-  request.name = Name()
-    ..firstName = 'Foo'
-    ..lastName = 'Bar';
+  request.name = Name(
+    firstName: 'Foo',
+    lastName: 'Bar',
+  );
 
   try {
     final response = await client.sayHello(request);

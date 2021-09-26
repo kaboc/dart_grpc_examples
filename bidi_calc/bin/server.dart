@@ -4,7 +4,10 @@ import 'package:bidi_calc/src/pb/calc.pbgrpc.dart';
 
 class CalcService extends CalcServiceBase {
   @override
-  Stream<CalcResponse> calculate(ServiceCall call, Stream<CalcRequest> request) async* {
+  Stream<CalcResponse> calculate(
+    ServiceCall call,
+    Stream<CalcRequest> request,
+  ) async* {
     final numbers = <int>[];
 
     await for (final req in request) {
@@ -14,16 +17,16 @@ class CalcService extends CalcServiceBase {
       final sum = numbers.reduce((a, b) => a + b);
       final avg = sum / numbers.length;
 
-      yield CalcResponse()..message = numbers.toString();
+      yield CalcResponse(message: numbers.toString());
       await _wait();
-      yield CalcResponse()..message = 'Total: $sum';
+      yield CalcResponse(message: 'Total: $sum');
       await _wait();
-      yield CalcResponse()..message = 'Average: $avg';
+      yield CalcResponse(message: 'Average: $avg');
     }
   }
 
-  Future<void> _wait() async {
-    return await Future.delayed(const Duration(milliseconds: 100));
+  Future<void> _wait() {
+    return Future.delayed(const Duration(milliseconds: 100));
   }
 }
 
@@ -37,6 +40,6 @@ Future<void> main(List<String> args) async {
   print('Server listening on port ${server.port}...');
 }
 
-int toInt(String text) {
+int? toInt(String? text) {
   return text == null ? null : int.parse(text);
 }
