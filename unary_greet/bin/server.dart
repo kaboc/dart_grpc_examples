@@ -10,14 +10,16 @@ class GreeterService extends GreeterServiceBase {
 
     final now = DateTime.now();
 
-    final greeting = Greeting()
-      ..message = now.hour < 12 ? 'Good Morning' : 'Hi'
-      ..names.addAll({
+    final greeting = Greeting(
+      message: now.hour < 12 ? 'Good Morning' : 'Hi',
+      names: {
         'first': request.name.firstName,
         'last': request.name.lastName,
-      })
-      ..time = Int64(now.millisecondsSinceEpoch);
-    return HelloReply()..greeting = greeting;
+      },
+      time: Int64(now.millisecondsSinceEpoch),
+    );
+
+    return HelloReply(greeting: greeting);
   }
 }
 

@@ -17,7 +17,7 @@ class CalcService extends CalcServiceBase {
       final sum = numbers.reduce((a, b) => a + b);
       final avg = sum / numbers.length;
 
-      yield CalcResponse(message: numbers.toString());
+      yield CalcResponse(message: '$numbers');
       await _wait();
       yield CalcResponse(message: 'Total: $sum');
       await _wait();
