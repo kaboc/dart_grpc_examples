@@ -29,12 +29,12 @@ Unlike other examples in this repository, this one uses gRPC-Web that requires a
 
 The following settings set up a Docker container with a proxy ([Envoy](https://www.envoyproxy.io/)) in it that listens on the port 50051 of the host machine and proxies to the port 9090, which the server should listen on.
 
-1. Copy `envoy.Dockerfile` and `envoy.yaml` in `proxy_example` to your preferred directory.
-2. The value of `address` on the last line of envoy.yaml may need to be changed depending on your environment.
+1. The value of `address` on the last line of envoy.yaml may need to be changed depending on your environment.
 See the README of gRPC-Web's [helloworld](https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway/examples/helloworld) for more information.
-3. Build a Docker image by running the following command in the folder where envoy.Dockerfile is located.  
+2. Build a Docker image by running the following command in the folder where envoy.Dockerfile is located.  
 ```
-$ docker build -t greet/envoy -f ./envoy.Dockerfile .
+$ cd path/to/proxy_exmple
+$ docker build -t greet/envoy -f .
 ```
 4. Create a container and start it with the command below.
 If necessary, change 50051 to another port you want the proxy to listen on.  

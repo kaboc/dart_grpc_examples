@@ -20,7 +20,7 @@ Future<void> main() async {
     await for (final res in responses) {
       print(res.message);
     }
-  } catch (e) {
+  } on Exception catch (e) {
     print(e);
   } finally {
     await channel.shutdown();

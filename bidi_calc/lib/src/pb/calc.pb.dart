@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: calc.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -11,23 +15,24 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class CalcRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalcRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'calc'), createEmptyInstance: create)
-    ..aInt64(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'number')
-    ..hasRequiredFields = false
-  ;
-
-  CalcRequest._() : super();
   factory CalcRequest({
     $fixnum.Int64? number,
   }) {
-    final _result = create();
+    final $result = create();
     if (number != null) {
-      _result.number = number;
+      $result.number = number;
     }
-    return _result;
+    return $result;
   }
+  CalcRequest._() : super();
   factory CalcRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CalcRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalcRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'calc'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'number')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -37,8 +42,10 @@ class CalcRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalcRequest copyWith(void Function(CalcRequest) updates) => super.copyWith((message) => updates(message as CalcRequest)) as CalcRequest; // ignore: deprecated_member_use
+  CalcRequest copyWith(void Function(CalcRequest) updates) => super.copyWith((message) => updates(message as CalcRequest)) as CalcRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalcRequest create() => CalcRequest._();
   CalcRequest createEmptyInstance() => create();
@@ -58,23 +65,24 @@ class CalcRequest extends $pb.GeneratedMessage {
 }
 
 class CalcResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalcResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'calc'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..hasRequiredFields = false
-  ;
-
-  CalcResponse._() : super();
   factory CalcResponse({
     $core.String? message,
   }) {
-    final _result = create();
+    final $result = create();
     if (message != null) {
-      _result.message = message;
+      $result.message = message;
     }
-    return _result;
+    return $result;
   }
+  CalcResponse._() : super();
   factory CalcResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CalcResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalcResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'calc'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -84,8 +92,10 @@ class CalcResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalcResponse copyWith(void Function(CalcResponse) updates) => super.copyWith((message) => updates(message as CalcResponse)) as CalcResponse; // ignore: deprecated_member_use
+  CalcResponse copyWith(void Function(CalcResponse) updates) => super.copyWith((message) => updates(message as CalcResponse)) as CalcResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalcResponse create() => CalcResponse._();
   CalcResponse createEmptyInstance() => create();
@@ -104,3 +114,6 @@ class CalcResponse extends $pb.GeneratedMessage {
   void clearMessage() => clearField(1);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

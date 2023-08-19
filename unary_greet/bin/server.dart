@@ -28,10 +28,11 @@ Future<void> main(List<String> args) async {
   final results = parser.parse(args);
   final port = toInt(results['port']?.toString()) ?? 50051;
 
-  final server = Server(
-    [GreeterService()],
-    const <Interceptor>[],
-    CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+  final server = Server.create(
+    services: [GreeterService()],
+    // Specifying `IdentityCodec()` leads to an error on web client side.
+    // https://github.com/grpc/grpc-dart/issues/506
+    codecRegistry: CodecRegistry(codecs: const [GzipCodec()]),
   );
   await server.serve(port: port);
   print('Server listening on port ${server.port}...');

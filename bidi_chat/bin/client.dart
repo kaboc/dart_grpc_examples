@@ -24,7 +24,7 @@ Future<void> main(List<String> args) async {
     await for (final res in responses) {
       print('[${res.name}] ${res.message}');
     }
-  } catch (e) {
+  } on Exception catch (e) {
     print(e);
   } finally {
     await channel.shutdown();

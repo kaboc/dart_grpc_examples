@@ -7,7 +7,7 @@ Future<void> main() async {
     'localhost',
     port: 50051,
     options: ChannelOptions(
-      credentials: ChannelCredentials.insecure(),
+      credentials: const ChannelCredentials.insecure(),
       codecRegistry:
           CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
     ),
@@ -15,11 +15,11 @@ Future<void> main() async {
 
   final client = GreeterClient(channel);
 
-  final request = HelloRequest();
-  request.name = Name(
-    firstName: 'Foo',
-    lastName: 'Bar',
-  );
+  final request = HelloRequest()
+    ..name = Name(
+      firstName: 'Foo',
+      lastName: 'Bar',
+    );
 
   try {
     final response = await client.sayHello(
@@ -33,7 +33,7 @@ Future<void> main() async {
       '${greet.message}, ${greet.names['first']} ${greet.names['last']}! '
       "It's ${DateFormat.Hms().format(time)} now.",
     );
-  } catch (e) {
+  } on Exception catch (e) {
     print('Caught error: $e');
   }
 

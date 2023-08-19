@@ -35,7 +35,7 @@ Future<void> main(List<String> args) async {
   final results = parser.parse(args);
   final port = toInt(results['port']?.toString()) ?? 50051;
 
-  final server = Server([CalcService()]);
+  final server = Server.create(services: [CalcService()]);
   await server.serve(port: port);
   print('Server listening on port ${server.port}...');
 }

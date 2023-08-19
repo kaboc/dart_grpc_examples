@@ -21,7 +21,7 @@ class ChatService extends ChatServiceBase {
           controller.sink.add(req);
         }
       });
-    }).onError((dynamic e) {
+    }).onError((Object? e) {
       print(e);
 
       _controllers.remove(clientController);
@@ -45,7 +45,7 @@ Future<void> main(List<String> args) async {
   final results = parser.parse(args);
   final port = toInt(results['port']?.toString()) ?? 50051;
 
-  final server = Server([ChatService()]);
+  final server = Server.create(services: [ChatService()]);
   await server.serve(port: port);
   print('Server listening on port ${server.port}...');
 }
